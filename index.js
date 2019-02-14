@@ -6,11 +6,11 @@ const { transform } = require('./lib/transformer')
  * Transform and optimize SVG to valid React SVG
  * @param {String} svg - the svg string
  */
-const svg2jsx = svg => {
+const svg2jsx = (svg, options = {}) => {
 
   return optimize(svg)
     .then(parse)
-    .then(transform)
+    .then((ast) => transform(ast, options))
 
 }
 	
